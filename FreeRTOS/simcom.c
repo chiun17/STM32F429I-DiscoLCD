@@ -116,6 +116,14 @@ void SIMCOM_Init()
 
         vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
+    while(1){
+        dbg_puts("Enter phone sim card passward\n\r");
+        if(SendCmd_Check("AT+CPIN=\"0000\"","OK")){
+           dbg_puts("OK!\n\r");
+           break;
+        }
+       vTaskDelay(5000 / portTICK_PERIOD_MS);
+    }
 
     while(1) {
         dbg_puts("Try disable calling number\n\r");
